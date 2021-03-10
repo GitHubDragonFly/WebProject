@@ -20,8 +20,9 @@ It is highly recommended that you perform the following steps:
 - PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/.
 - PLC tags and their values are shown on the pylogix1 page at http://127.0.0.1:8000/pylogix1/.
 - The web page is set to refresh every 10 seconds and attempt to re-read the tag values from the PLC.
-- As stated above, make sure to set correct PLC parameters.
+- As stated above, make sure to set the correct PLC parameters.
 - There is no "Write" functionality included.
+- It is possible to add additional pages, just check the other batch file mentioned above.
 
 There might be bugs in the app.
 
