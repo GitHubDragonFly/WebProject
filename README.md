@@ -1,6 +1,6 @@
 # WebProject
 Simple Windows DOS based Web project that uses browser page to show values fetched from a programmable logic controller (PLC).
-Besides for Windows based computer, it requires that python, django and pylogix be installed on it as well.
+Besides for Windows based computer, it requires that [python](https://www.python.org), [django](https://www.djangoproject.com/) and [pylogix](https://github.com/dmroeder/pylogix) be installed on it as well.
 
 INTENDED FOR BEGINNERS, TEST DEVELOPMENT AND/OR LEARNING PURPOSES ONLY.
 
