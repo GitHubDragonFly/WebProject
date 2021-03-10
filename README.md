@@ -12,21 +12,21 @@ In order to understand certain options, it is highly recommended that you perfor
 - Read the django intro tutorial: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
 - Check that same tutorial captured in a batch file: https://github.com/GitHubDragonFly/django/blob/main/extras/polls.bat
 - Install all the required software as mentioned above.
-- Make sure to set the correct IP Address/Processor Slot/Micro800 values for your PLC (edit the pylogix.bat file and search for comm.IPAddress)
+- Make sure to set the correct IP Address/Processor Slot/Micro800 values for your PLC (since all these options are in the same section then just edit the pylogix.bat file and search for comm.IPAddress)
 - Run the pylogix.bat file and make sure to create the admin/superuser account when prompted (which you will use to enter tags).
 
 # Functionality
-- PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/ in your browser.
-- Only the first value is ever used, so entering the initial value for a tag might be useful to show if there is initial communication with the PLC. Since values are setup as strings, you could possibly enter "Not Connected" or similar. Once a value is fetched from the PLC then it will overwrite that value.
+- PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/ in your browser (this requires the admin account mentioned previously).
+- Only the first tag value is ever used, so entering the initial value for a tag might be useful to show if there is initial communication with the PLC. Since values are setup as strings, you could possibly enter "Not Connected" or similar. Once a value is fetched from the PLC then it will overwrite that value.
 - PLC tags and their values are shown on the pylogix1 page at http://127.0.0.1:8000/pylogix1/ in your browser.
-- The web page is set to refresh every 10 seconds and attempt to re-read the tag values from the PLC.
+- The web page is set to refresh every 10 seconds and attempt to re-read the tag values from the PLC (this value can be changed in the file itself).
 - As stated above, make sure to set the correct PLC parameters.
 - There is no "Write" functionality included.
-- It is possible to add additional pages, just check the other batch file mentioned above.
+- It is possible to add additional pages, just check the other batch file mentioned above (django intro tutorial).
 
-There might be bugs in the app.
+There might be bugs in the app (not that I noticed any but one never knows).
 
-Screenshots folder has pictures of this app running inside the Firefox browser.
+Screenshots folder has pictures of this project running inside the Firefox browser.
 
 # Usage
 All it takes is to:
@@ -34,8 +34,8 @@ All it takes is to:
 - Download and extract the zip file of this project.
 - Use this download location or copy the pylogix.bat file to the folder of your choice.
 - Open command prompt, navigate to the folder where you have the pylogix.bat file and run it by simply typing pylogix.bat
-- Create admin/superuser account when prompted.
-- Make sure to read everything that's in this description, in the batch file itself and in the screen output.
+- Create admin/superuser account when prompted, so you can add tags.
+- Make sure to read everything that's in this description, in the batch file itself and in the screen output when running the batch file.
 
 # Licensing
 This is licensed under BSD License.
