@@ -17,8 +17,8 @@ It is highly recommended that you perform the following steps:
 - Run the pylogix.bat file and make sure to create the admin/superuser account when prompted (which you will use to enter tags).
 
 # Functionality
-- PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/.
-- PLC tags and their values are shown on the pylogix1 page at http://127.0.0.1:8000/pylogix1/.
+- PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/ in your browser.
+- PLC tags and their values are shown on the pylogix1 page at http://127.0.0.1:8000/pylogix1/ in your browser.
 - The web page is set to refresh every 10 seconds and attempt to re-read the tag values from the PLC.
 - As stated above, make sure to set the correct PLC parameters.
 - There is no "Write" functionality included.
