@@ -5,6 +5,7 @@ Besides for Windows based computer, it requires that python, django and pylogix 
 INTENDED FOR BEGINNERS, TEST DEVELOPMENT AND/OR LEARNING PURPOSES ONLY.
 
 This is a Windows DOS batch file that performs automated steps of creating web pages and running the server.
+Currently setup to run on local network and is using the built-in lightweight django server with SQLite database.
 
 Tested as working in Windows 10 with: python 3.6.8 ; django 3.1.7 ; pylogix 0.7.10.
 
