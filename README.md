@@ -17,6 +17,7 @@ In order to understand certain options, it is highly recommended that you perfor
 
 # Functionality
 - PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/ in your browser.
+- Only the first value is ever used, so entering the initial value for a tag might be useful to show if there is initial communication with the PLC. Since values are setup as strings, you could possibly enter "Not Connected" or similar. Once a value is fetched from the PLC then it will overwrite that value.
 - PLC tags and their values are shown on the pylogix1 page at http://127.0.0.1:8000/pylogix1/ in your browser.
 - The web page is set to refresh every 10 seconds and attempt to re-read the tag values from the PLC.
 - As stated above, make sure to set the correct PLC parameters.
