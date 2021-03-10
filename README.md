@@ -20,7 +20,7 @@ In order to understand certain options, it is highly recommended that you perfor
 - PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/ in your browser (this requires the admin account mentioned previously).
 - Only the first tag value is ever used, so entering the initial value for a tag might be useful to show if there is initial communication with the PLC. Since values are setup as strings, you could possibly enter "Not Connected" or similar. Once a value is fetched from the PLC then it will overwrite that value.
 - PLC tags and their values are shown on the pylogix1 page at http://127.0.0.1:8000/pylogix1/ in your browser.
-- The web page is set to refresh every 10 seconds and attempt to re-read the tag values from the PLC (this value can be changed in the file itself).
+- The web page is set to refresh every 10 seconds and attempt to re-read the tag values from the PLC (this refresh value can be changed in the file itself).
 - As stated above, make sure to set the correct PLC parameters.
 - There is no "Write" functionality included.
 - It is possible to add additional pages, just check the other batch file mentioned above (django intro tutorial).
