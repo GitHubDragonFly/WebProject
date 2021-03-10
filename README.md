@@ -8,12 +8,11 @@ This is a Windows DOS batch file that performs automated steps of creating web p
 
 Tested as working in Windows 10 with: python 3.6.8 ; django 3.1.7 ; pylogix 0.7.10.
 
-It is highly recommended that you perform the following steps:
-
+In order to understand certain options, it is highly recommended that you perform the following steps:
 - Read the django intro tutorial: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
 - Check that same tutorial captured in a batch file: https://github.com/GitHubDragonFly/django/blob/main/extras/polls.bat
 - Install all the required software as mentioned above.
-- Make sure to set the correct IP Address/Processor Slot/Micro800 for your PLC (edit the pylogix.bat file and search for comm.IPAddress)
+- Make sure to set the correct IP Address/Processor Slot/Micro800 values for your PLC (edit the pylogix.bat file and search for comm.IPAddress)
 - Run the pylogix.bat file and make sure to create the admin/superuser account when prompted (which you will use to enter tags).
 
 # Functionality
