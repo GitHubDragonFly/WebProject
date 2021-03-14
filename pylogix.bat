@@ -35,7 +35,7 @@ cd pylogixsite
 python manage.py startapp pylogix1
 
 REM -------------------------------------------------------------------------------------------------------------------------
-REM This section could be used to add a new page (so pylogix1 would become pylogix2 or similar).
+REM This section can be used as a template to add a new page (so pylogix1 would become pylogix2 or similar).
 
 cd pylogix1
 
@@ -73,13 +73,27 @@ echo         if not plcTime.Value is None: >> views.py
 echo             for obj in Address.objects.order_by('-id'): >> views.py
 echo                 pylogix1_refresh_values(obj.id) >> views.py
 echo. >> views.py
-echo         ^"^"^" Return the last 10 plc addresses ^"^"^" >> views.py
-echo         return Address.objects.order_by('-id')[:10] >> views.py
+echo         ^"^"^" Return the last 50 plc addresses ^"^"^" >> views.py
+echo         return Address.objects.order_by('-id')[:50] >> views.py
 echo. >> views.py
 echo def pylogix1_refresh_values(id): >> views.py
 echo     plcAddress = str(get_object_or_404(Address, pk=id)) >> views.py
 echo     currentValues = Values.objects.filter(plc_address_id=id) >> views.py
-echo     newValue = str(comm.Read(plcAddress).Value) >> views.py
+echo     readArray = False >> views.py
+echo     arrayElementCount = 0 >> views.py
+echo. >> views.py
+echo     if plcAddress.endswith('}') and '{' in plcAddress: # 1 or 2 or 3 dimensional array >> views.py
+echo         try: >> views.py
+echo             arrayElementCount = int(plcAddress[plcAddress.index('{') + 1:plcAddress.index('}')]) >> views.py
+echo             readArray = True >> views.py
+echo             plcAddress = plcAddress[:plcAddress.index('{')] >> views.py
+echo         except: >> views.py
+echo             pass >> views.py
+echo. >> views.py
+echo     if readArray and arrayElementCount ^> 0: >> views.py
+echo         newValue = comm.Read(plcAddress, arrayElementCount).Value >> views.py
+echo     else: >> views.py
+echo         newValue = comm.Read(plcAddress).Value >> views.py
 echo. >> views.py
 echo     if currentValues.count() ^> 0: >> views.py
 echo         if currentValues[0].plc_address_value == '': >> views.py
@@ -109,10 +123,10 @@ echo        return self.plc_address >> models.py
 echo. >> models.py
 echo class Values(models.Model): >> models.py
 echo    plc_address = models.ForeignKey(Address, on_delete=models.CASCADE) >> models.py
-echo    plc_address_value = models.CharField(max_length=200) >> models.py
+echo    plc_address_value = models.CharField(max_length=2500) >> models.py
 echo. >> models.py
 echo    def __str__(self): >> models.py
-echo        return '{ ' + self.plc_address_value + ' }' >> models.py
+echo        return self.plc_address_value >> models.py
 
 echo from django.contrib import admin >> admin.py
 echo from .models import Address, Values >> admin.py
@@ -141,24 +155,33 @@ echo ^<html^> >> index.html
 echo   ^<head^> >> index.html
 echo     {%% load static %%} >> index.html
 echo     ^<link rel="stylesheet" type="text/css" href="{%% static 'pylogix1/style.css' %%}"^> >> index.html
-echo     ^<meta http-equiv="refresh" content="10" charset="utf-8"^> >> index.html
-echo     ^<title^>Pylogix Tags^</title^> >> index.html
+echo     ^<meta http-equiv="refresh" content="30" charset="utf-8"^> >> index.html
+echo     ^<title^>Pylogix Tags ^& Values^</title^> >> index.html
 echo   ^</head^> >> index.html
 echo   ^<body^> >> index.html
-echo     ^<p^>^<h2^>Pylogix Tags^</h2^>^</p^> >> index.html
-echo     {%% if latest_address_list %%} >> index.html
-echo         ^<ul^> >> index.html
-echo         {%% for plcAddress in latest_address_list %%} >> index.html
-echo             ^<li^>^ >> index.html
-echo               {{ plcAddress.plc_address }} >> index.html
-echo               ^<h2 style="color:blue;"^>{{ plcAddress.values_set.first }}^</h2^> >> index.html
-echo             ^</li^> >> index.html
-echo             ^<p^>^</p^> >> index.html
-echo         {%% endfor %%} >> index.html
-echo         ^</ul^> >> index.html
-echo     {%% else %%} >> index.html
-echo         ^<p^>Pylogix 1 - No plc address available.^</p^> >> index.html
-echo     {%% endif %%} >> index.html
+echo     ^<p^>^<h3 style="color:seagreen;"^>Tags ^& Values^</h3^>^</p^> >> index.html
+echo     ^<table^> >> index.html
+echo       ^<thead^>^<tr^>^<th^>Tag Name^</th^>^<th^>Value^</th^>^</tr^>^</thead^> >> index.html
+echo       ^<tbody^> >> index.html
+echo         {%% if latest_address_list %%} >> index.html
+echo             {%% for plcAddress in latest_address_list %%} >> index.html
+echo                 ^<tr^> >> index.html
+echo                   ^<td^> >> index.html
+echo                     {{ plcAddress.plc_address }} >> index.html
+echo                   ^</td^> >> index.html
+echo                   ^<td^> >> index.html
+echo                     ^<h3 style="color:blue;"^>{{ plcAddress.values_set.first }}^</h3^> >> index.html
+echo                   ^</td^> >> index.html
+echo                 ^</tr^> >> index.html
+echo             {%% endfor %%} >> index.html
+echo         {%% else %%} >> index.html
+echo             ^<tr^> >> index.html
+echo             ^<td^>No plc address available^</td^> >> index.html
+echo             ^<td^>  ------  ^</td^> >> index.html
+echo             ^</tr^> >> index.html
+echo         {%% endif %%} >> index.html
+echo       ^<tbody^> >> index.html
+echo     ^</table^> >> index.html
 echo   ^</body^> >> index.html
 echo ^</html^> >> index.html
 
@@ -170,8 +193,10 @@ cd static
 mkdir pylogix1
 cd pylogix1
 
-echo li a { color: navy; text-decoration: none; font-size: 160%%; } > style.css
-echo body { background-color: lime; } >> style.css
+echo table { border: 1; padding: 2px; background-color: black; } > style.css
+echo th, td { padding: 5px; background-color: #f5f1c1; font-size: 120%%; } >> style.css
+echo li a { color: navy; text-decoration: none; font-size: 120%%; } >> style.css
+echo body { background-color: honeydew; } >> style.css
 
 cd..
 cd..
