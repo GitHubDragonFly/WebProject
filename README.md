@@ -18,7 +18,7 @@ In order to understand certain options, it is highly recommended that you perfor
 
 # Functionality
 - PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/ in your browser (this requires the admin account mentioned previously).
-- To read elements of an array, add startIndex and {elementCount}, where startIndex can be either of x or x,y or x,y,z. Example: CT_STRINGArray[2]{3} or CT_DINTArray_3D[0,1,0]{15}.
+- To read bits or elements of an array, add startIndex and {elementCount}, where for arrays the startIndex can be either of x or x,y or x,y,z. Example: CT_DINT.0{15} or CT_STRINGArray[2]{3} or CT_DINTArray_3D[0,1,0]{15}.
 - Only the first tag value is ever used. Entering the initial value on the admin page is unnecessary. Values are setup as strings and if there is no communication then a message "~ not communicating ~" will show. Once a value is fetched from the PLC then it will overwrite that value.
 - PLC tags and their values are shown on the pylogix1 page at http://127.0.0.1:8000/pylogix1/ in your browser.
 - A single Value is set to max 2500 characters, so change it if you need more or less.
