@@ -58,10 +58,6 @@ echo. >> views.py
 echo     def get_queryset(self): >> views.py
 echo         global comm >> views.py
 echo. >> views.py
-echo         if not comm is None: >> views.py
-echo             comm.Close() >> views.py
-echo             comm = None >> views.py
-echo. >> views.py
 echo         comm = PLC() >> views.py
 echo         comm.IPAddress = '192.168.1.15' >> views.py
 echo         comm.ProcessorSlot = 3 >> views.py
@@ -72,6 +68,23 @@ echo. >> views.py
 echo         if not plcTime.Value is None: >> views.py
 echo             for obj in Address.objects.order_by('-id'): >> views.py
 echo                 pylogix1_refresh_values(obj.id) >> views.py
+echo         else: >> views.py
+echo             for obj in Address.objects.order_by('-id'): >> views.py
+echo                 plcAddress = str(get_object_or_404(Address, pk=obj.id)) >> views.py
+echo                 currentValues = Values.objects.filter(plc_address_id=obj.id) >> views.py
+echo. >> views.py
+echo                 if currentValues.count() ^> 0: >> views.py
+echo                     if currentValues[0].plc_address_value == '': >> views.py
+echo                         b = Values(plc_address_id=obj.id, plc_address_value='~ not communicating ~') >> views.py
+echo                         b.save() >> views.py
+echo                     else: >> views.py
+echo                         Values.objects.filter(plc_address_id=obj.id).update(plc_address_value='~ not communicating ~') >> views.py
+echo                 else: >> views.py
+echo                     b = Values(plc_address_id=obj.id, plc_address_value='~ not communicating ~') >> views.py
+echo                     b.save() >> views.py
+echo. >> views.py
+echo         comm.Close() >> views.py
+echo         comm = None >> views.py
 echo. >> views.py
 echo         ^"^"^" Return the last 50 plc addresses ^"^"^" >> views.py
 echo         return Address.objects.order_by('-id')[:50] >> views.py
