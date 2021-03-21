@@ -39,7 +39,7 @@ All it takes is to:
 - Download and install python, django and pylogix to your computer.
 - Download and extract the zip file of this project.
 - Use that download location or copy the pylogix.bat / pylogix.sh file to the folder of your choice.
-- Open command prompt / terminal, navigate to the folder where you have the script file and run it by simply typing pylogix.bat or ./pylogix.sh
+- Open command prompt / terminal, navigate to the folder where you have the script file and run it by simply typing pylogix.bat or ./pylogix.sh (Linux note: before running this shell script you will have to make it executable by typing: chmod +x pylogix.sh)
 - Create admin/superuser account when prompted, so you can add tags.
 - Make sure to read everything that's in this description, in the script file itself and in the screen output when running the script file.
 
