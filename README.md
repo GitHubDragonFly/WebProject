@@ -14,7 +14,7 @@ Tested as working in:
 
 In order to understand certain django interface/database options, it is highly recommended that you perform the following steps:
 - Read the django intro tutorial: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
-- Check that same tutorial captured in a batch/bash files: https://github.com/GitHubDragonFly/django/blob/main/extras/polls.bat
+- Check that same tutorial captured in a batch/bash files: https://github.com/GitHubDragonFly/django/blob/main/extras/
 - Install all the required software as mentioned above.
 - Make sure to set the correct IP Address/Processor Slot/Micro800 values for your PLC. Since all these options are in the same section then just edit the pylogix.bat / pylogix.sh file and search for "comm.IPAddress".
 - Run the pylogix.bat / pylogix.sh file and make sure to create the admin/superuser account when prompted (which you will use to enter tags via admin web page).
