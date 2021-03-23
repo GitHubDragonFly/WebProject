@@ -1,5 +1,5 @@
 # WebProject
-Simple Web project that uses a web browser page to show values fetched from a programmable logic controller (PLC).
+Simple Web project that uses a web browser page to show values fetched from Allen Bradley programmable logic controller (PLC).
 It requires that [python](https://www.python.org), [django](https://www.djangoproject.com/) and [pylogix](https://github.com/dmroeder/pylogix) be installed on the computer.
 These are Windows DOS batch file and Linux bash file (shell script).
 
