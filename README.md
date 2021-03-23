@@ -48,3 +48,6 @@ This is licensed under BSD License.
 
 # Trademarks
 Any and all trademarks, either directly or indirectly mentioned in this project, belong to their respective owners.
+
+# Useful Resources
+Another somewhat similar project, which has json as well as html version: [pylogix-api](https://github.com/TheFern2/pylogix-api).
