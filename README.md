@@ -14,10 +14,10 @@ Tested as working in:
 
 In order to understand certain django interface/database options, it is highly recommended that you perform the following steps:
 - Read the django intro tutorial: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
-- Check that same tutorial captured in a batch/bash files: https://github.com/GitHubDragonFly/django/blob/main/extras/
+- Check that same tutorial captured in batch/bash files: https://github.com/GitHubDragonFly/django/blob/main/extras/
 - Install all the required software as mentioned above.
 - Make sure to set the correct IP Address/Processor Slot/Micro800 values for your PLC. Since all these options are in the same section then just edit the pylogix.bat / pylogix.sh file and search for "comm.IPAddress".
-- Run the pylogix.bat / pylogix.sh file and make sure to create the admin/superuser account when prompted (which you will use to enter tags via admin web page).
+- Run the pylogix.bat / pylogix.sh file and make sure to create the admin/superuser account when prompted.
 
 # Functionality
 - PLC tags are entered via the admin page at http://127.0.0.1:8000/admin/ in your browser (this requires the admin account mentioned previously).
@@ -28,7 +28,7 @@ In order to understand certain django interface/database options, it is highly r
 - The web page is set to refresh every 30 seconds and attempt to re-read the tag values from the PLC. This refresh value can be changed in the file itself.
 - As stated above, make sure to set the correct PLC parameters.
 - There is no "Write" functionality included.
-- It is possible to add additional pages, just check the other batch file mentioned above (django intro tutorial).
+- It is possible to add additional pages, just check the other batch/bash files mentioned above (django intro tutorial).
 
 There might be bugs in the app (not that I noticed any but one never knows).
 
@@ -50,4 +50,4 @@ This is licensed under BSD License.
 Any and all trademarks, either directly or indirectly mentioned in this project, belong to their respective owners.
 
 # Useful Resources
-Another somewhat similar project, which is using Flask and has json as well as html version: [pylogix-api](https://github.com/TheFern2/pylogix-api).
+Another somewhat similar project, which is using Flask, has both json and html version: [pylogix-api](https://github.com/TheFern2/pylogix-api).
