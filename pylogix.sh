@@ -13,7 +13,9 @@
 # To start the process below, type the following comand: ./pylogix.sh
 
 # ~ FIRST RUN WILL ATTEMPT TO CREATE THE PROJECT, DIRECTORY STRUCTURE, SETUP DATABASE, CREATE ADMIN ACCOUNT AND RUN THE SERVER
-# ~ SUBSEQUENT RUNS WILL ATTEMPT TO RUN THE SERVER (if mysite folder is detected)
+# ~ SUBSEQUENT RUNS WILL ATTEMPT TO RUN THE SERVER (if "pylogixsite" folder is detected)
+
+# Depending on your setup, you might need to rename all "python3" commands to "python".
 
 set +v #do not echo the following commands
 
@@ -41,12 +43,11 @@ else
   python3 manage.py startapp pylogix1
 
   # -------------------------------------------------------------------------------------------------------------------------
-  # This section can be used as a template to add a new page (so pylogix1 would become pylogix2 or similar).
+  # This section can be used as a template to add a new web page (so pylogix1 would become pylogix2 or similar).
 
   cd pylogix1
 
   echo >> views.py
-  echo from django.http import HttpResponseRedirect >> views.py
   echo from django.views import generic >> views.py
   echo from django.urls import reverse >> views.py
   echo from django.shortcuts import get_object_or_404 >> views.py
@@ -178,7 +179,6 @@ else
   echo '  '\<title\>Pylogix Tags \& Values\</title\> >> index.html
   echo ''\</head\> >> index.html
   echo ''\<body\> >> index.html
-  echo '  '\<p\>\<h3 style=\"color:seagreen\;\"\>Tags \& Values\</h3\>\</p\> >> index.html
   echo '  '\<table\> >> index.html
   echo '    '\<thead\>\<tr\>\<th\>Tag Name\</th\>\<th\>Value\</th\>\</tr\>\</thead\> >> index.html
   echo '    '\<tbody\> >> index.html
@@ -212,8 +212,8 @@ else
   mkdir pylogix1
   cd pylogix1
 
-  echo table { border: 1\; padding: 2px\; background-color: black\; } > style.css
-  echo th, td { padding: 5px\; background-color: gainsboro\; font-size: 120%\; } >> style.css
+  echo table { border: 1\; padding: 3px\; background-color: navy\; } > style.css
+  echo th, td { padding: 6px\; background-color: ivory\; font-size: 120%\; } >> style.css
   echo li a { color: navy\; text-decoration: none\; font-size: 120%\; } >> style.css
   echo body { background-color: honeydew\; } >> style.css
 
@@ -237,10 +237,10 @@ else
 
   cat settings.py | while IFS= read -r line; #preserve spaces in strings
   do
-    if [ "$line" = "TIME_ZONE = 'UTC'" ];
+    if [[ $line == TIME_ZONE* ]];
     then
       echo TIME_ZONE = \'EST\' >> temp.txt
-    elif [ "$line" = "INSTALLED_APPS = [" ];
+    elif [[ $line == INSTALLED_APPS* ]];
     then
       echo "$line" >> temp.txt
       echo '    '\'pylogix1.apps.Pylogix1Config\', >> temp.txt

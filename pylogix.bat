@@ -172,7 +172,6 @@ echo     ^<meta http-equiv="refresh" content="30" charset="utf-8"^> >> index.htm
 echo     ^<title^>Pylogix Tags ^& Values^</title^> >> index.html
 echo   ^</head^> >> index.html
 echo   ^<body^> >> index.html
-echo     ^<p^>^<h3 style="color:seagreen;"^>Tags ^& Values^</h3^>^</p^> >> index.html
 echo     ^<table^> >> index.html
 echo       ^<thead^>^<tr^>^<th^>Tag Name^</th^>^<th^>Value^</th^>^</tr^>^</thead^> >> index.html
 echo       ^<tbody^> >> index.html
@@ -206,8 +205,8 @@ cd static
 mkdir pylogix1
 cd pylogix1
 
-echo table { border: 1; padding: 2px; background-color: black; } > style.css
-echo th, td { padding: 5px; background-color: #f5f1c1; font-size: 120%%; } >> style.css
+echo table { border: 1; padding: 3px; background-color: navy; } > style.css
+echo th, td { padding: 6px; background-color: ivory; font-size: 120%%; } >> style.css
 echo li a { color: navy; text-decoration: none; font-size: 120%%; } >> style.css
 echo body { background-color: honeydew; } >> style.css
 
@@ -270,7 +269,7 @@ echo --------------------------------------------------------------------------
 python manage.py createsuperuser
 
 REM -------------------------------------------------------------------------------------------------------------------------
-REM Show usage messages
+REM Show usage messages. Add a link for any additional pages when created.
 
 echo ----------------------------------------------------------------------------
 echo You can access the following pages from your browser:
