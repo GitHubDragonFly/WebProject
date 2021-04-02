@@ -50,4 +50,4 @@ This is licensed under BSD License.
 Any and all trademarks, either directly or indirectly mentioned in this project, belong to their respective owners.
 
 # Useful Resources
-Another somewhat similar project, which is using Flask, has both json and html version: [pylogix-api](https://github.com/TheFern2/pylogix-api).
+Another somewhat similar project, which is using Flask and has both json and html version: [pylogix-api](https://github.com/TheFern2/pylogix-api).
