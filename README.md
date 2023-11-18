@@ -19,6 +19,14 @@ In order to understand certain django interface/database options, it is highly r
 - Make sure to set the correct IP Address/Processor Slot/Micro800 values for your PLC. Since all these options are in the same section then just edit the pylogix.bat / pylogix.sh file and search for `comm.IPAddress`.
 - Run the pylogix.bat / pylogix.sh file and make sure to create the admin/superuser account when prompted.
 
+# Screenshots
+
+Admin Page
+![Admin Page](screenshots/Pylogix%20Django%20Admin%20Page.png?raw=true)
+
+Tags Page
+![Tags Page](screenshots/Pylogix%20Django%20Tags%20Page.png?raw=true)
+
 # Functionality
 - PLC tags are entered via the admin page at `http://127.0.0.1:8000/admin/` in your browser (this requires the admin account mentioned previously).
 - To read bits or elements of an array, add startIndex and `{elementCount}`, where for arrays the startIndex can be either of `x` or `x,y` or `x,y,z`. Example: CT_DINT.0{15} or CT_STRINGArray[2]{3} or CT_DINTArray_3D[0,1,0]{15}.
