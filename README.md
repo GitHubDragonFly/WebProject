@@ -1,3 +1,8 @@
+# Reality Check
+Just for those of you who might be concerned about the Climate Change, here are couple of sobering insights:
+- Neil deGrasse Tyson's perspective on climate change: [YouTube Video](https://www.youtube.com/watch?v=tRA2SfSk2Tc)
+- My perspective, with statements from two AI entities: [Climate Change](https://githubdragonfly.github.io/viewers/templates/Climate%20Change.txt)
+
 # WebProject
 Simple Web project that uses a web browser page to show values fetched from Allen Bradley programmable logic controller (PLC).
 It requires that [python](https://www.python.org), [django](https://www.djangoproject.com/) and [pylogix](https://github.com/dmroeder/pylogix) be installed on the computer.
